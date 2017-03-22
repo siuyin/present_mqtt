@@ -25,6 +25,7 @@ func main() {
 	for {
 		msg := fmt.Sprintf("go gopher: %d", i)
 		c.Publish("my_topic", 0, false, msg) // HL
+		fmt.Printf("\r%d", i)
 		i++
 		time.Sleep(1 * time.Second)
 	}
