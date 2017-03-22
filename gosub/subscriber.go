@@ -20,7 +20,8 @@ func main() {
 	fmt.Println("Go MQTT subscriber")
 	url := dflt.EnvString("URL", "tcp://localhost:1883")
 	opts := mqtt.NewClientOptions().AddBroker(url) // HL
-	opts.SetClientID("go_subscriber")
+	cid := dflt.EnvString("ID", "go_subscriber")
+	opts.SetClientID(cid)
 	// 050 OMIT
 	opts.SetDefaultPublishHandler(f)
 	// 060 OMIT
