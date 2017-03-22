@@ -1,0 +1,54 @@
+MQTT Publish Subscribe
+with Go and ruby
+22 Mar 2017
+
+Loh Siu Yin
+Technology Consultant, Beyond Broadcast LLP
+siuyin@beyondbroadcast.com
+
+* MQTT: Message Queue for Telemetry Transport
+
+MQTT is a Client Server publish/subscribe messaging transport protocol.
+
+The heart of an MQTT system is the MQTT server or broker.
+
+MQTT clients are available for many languages including Go and ruby.
+
+* Identify or lauch a MQTT broker
+
+.play start_broker.sh
+mosquitto is an open-source MQTT broker written in C.
+
+.play kill_broker.sh
+
+* Ruby subscriber
+  gem install mqtt
+
+.play subscriber.rb
+
+This ruby client subscribes to 'my_topic'.
+
+* Go publisher
+  go get github.com/eclipse/paho.mqtt.golang"
+
+.code publisher.go /M010/,/M020/
+We must first import the paho mqtt package.
+
+* Connect to the broker.
+.code publisher.go /M020/,/M030/
+We set the broker address and client ID in mqtt.ClientOptions .
+
+* Publish messages
+.play publisher.go /M030/,/M040/
+
+This Go publishes go gopher: n to 'my_topic'.
+
+* Go subscriber
+.code gosub/subscriber.go /010/,/020/
+.code gosub/subscriber.go /050/,/060/
+.play gosub/subscriber.go /M030/,/M040/
+
+* Ruby publisher
+.play publisher.rb
+
+Similar code with ruby.
